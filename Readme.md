@@ -20,6 +20,13 @@ See below for reference.
 
 https://docs.emlid.com/reachrs/quickstart/first-setup
 
+## Setting up NTRIP
+
+Use the following guides to setup NTRIP with the EMLID.
+
+https://docs.emlid.com/reachrs/quickstart/ntrip-workflow
+http://sopac-csrc.ucsd.edu/index.php/crtn-connecting/
+
 # ROS driver configuration
 
 Run the driver with the following:
