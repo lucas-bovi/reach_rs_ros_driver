@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # Software License Agreement (BSD License)
 #
@@ -49,6 +49,8 @@ FixStatus = {-1 : 'No Fix',
 
 class ReachRsDriver(object):
     def __init__(self):
+        print(rospy.get_param_names())
+
         host = rospy.get_param('~reach_rs_host_or_ip', 'reach.local')
         port = rospy.get_param('~reach_rs_port')
         self.address = (host, port)
@@ -69,7 +71,7 @@ class ReachRsDriver(object):
         self.last_fix = None
         
     def __del__(self):
-        if self.socket:
+        if self.socket is not None:
             self.socket.close()
         
     def update(self):
@@ -137,12 +139,14 @@ class ReachRsDriver(object):
             
             try:
                 self.socket.settimeout(self.fix_timeout)
-                data = self.socket.recv(1024)
+                data = self.socket.recv(1024).decode()
+                # dataEnc = data.encode()
                 
                 if data == '':
                     rospy.logwarn('Lost connection. Trying to reconnect...')
                     self.connect_to_device()
                 else:
+                    print(data)
                     self.parse_data(data)
                     self.connection_status = 'receiving NMEA messages'
             except socket.timeout as t:

@@ -16,7 +16,15 @@ On the _Position output_ tab under _Output1_ choose _TCP_. Set the role to _Serv
 
 The IP address of the Reach RS can be found in the top-left corner of the ReachView web interface. Note IP address and port number in order to configure the ROS driver node correctly.
 
+See below for reference.
+
+https://docs.emlid.com/reachrs/quickstart/first-setup
+
 # ROS driver configuration
+
+Run the driver with the following:
+
+`rosrun reach_rs_driver reach_rs_driver_node _reach_rs_host_or_ip:=<IP-OF-DEVICE> _reach_rs_port:=<PORT-OF-DEVICE>`
 
 ## Published topics
 
